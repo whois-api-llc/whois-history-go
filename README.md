@@ -11,7 +11,7 @@ The minimum go version is 1.13.
 The library is distributed as a Go module
 
 ```bash
-go get github.com/whoisxmlapi/whoishistorygo
+go get github.com/whois-api-llc/whois-history-go
 ```
 
 # Examples
