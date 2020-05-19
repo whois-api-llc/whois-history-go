@@ -38,7 +38,7 @@ func HistoricWhoisPurchase(apiKey string) {
 	client := whoishistory.NewBasicClient(apiKey)
 
 	// Create request with additional options. Options can increase response time.
-	num, _, err := client.HistoricService.Preview(context.Background(), "whoisxmlapi.com",
+	arr, _, err := client.HistoricService.Purchase(context.Background(), "whoisxmlapi.com",
 		// Let's check records registered in 2019
 		whoishistory.OptionCreatedDateFrom(time.Date(2019, 1, 1, 0, 0, 0, 0, time.UTC)),
 		whoishistory.OptionCreatedDateTo(time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)),
@@ -53,5 +53,7 @@ func HistoricWhoisPurchase(apiKey string) {
 		log.Fatal(err)
 	}
 
-	log.Println(num)
+	for _, rec := range arr {
+		log.Println(rec.Audit.UpdatedDate, rec.RegistrarName)
+	}
 }

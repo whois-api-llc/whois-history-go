@@ -58,10 +58,12 @@ if err != nil {
 log.Println(num)
 
 // Make request to get actual records for domain
-record, _, err := client.HistoricService.Purchase(ctx, "whoisxmlapi.com")
+records, _, err := client.HistoricService.Purchase(ctx, "whoisxmlapi.com")
 if err != nil {
     log.Fatal(err)
 }
 
-log.Println(record.CreatedDate)
+for _, rec := range records {
+    log.Println(rec.Audit.UpdatedDate, rec.RegistrarName)
+}
 ```
